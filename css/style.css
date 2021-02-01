@@ -13,12 +13,23 @@ html {
   padding: 0 100px 0 100px;
 }
 
-nav ul,
 .main-info-section,
 .work-category {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
