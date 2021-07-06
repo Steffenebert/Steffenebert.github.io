@@ -11,12 +11,16 @@ spans.forEach(span => span.addEventListener('mouseout', function (e) {
 const htmlBar = document.querySelector('.bar-html')
 const cssBar = document.querySelector('.bar-css')
 const javascriptBar = document.querySelector('.bar-javascript')
+const javaBar = document.querySelector('.bar-java')
+const springBar = document.querySelector('.bar-spring')
 
 var timeline = new TimelineLite();
 
-timeline.fromTo(htmlBar, .75, {width: `calc(0% - 6px)`}, {width: `calc(90% - 6px)`})
-        .fromTo(cssBar, .75, {width: `calc(0% - 6px)`}, {width: `calc(90% - 6px)`})
-        .fromTo(javascriptBar, .75, {width: `calc(0% - 6px)`}, {width: `calc(90% - 6px)`})
+timeline.fromTo(htmlBar, .75, {width: `calc(0% - 6px)`}, {width: `calc(90% - 50px)`})
+        .fromTo(cssBar, .75, {width: `calc(0% - 6px)`}, {width: `calc(90% - 75px)`})
+        .fromTo(javascriptBar, .75, {width: `calc(0% - 6px)`}, {width: `calc(90% - 0px)`})
+        .fromTo(javaBar, .75, {width: `calc(0% - 6px)`}, {width: `calc(90% - 150px)`})
+        .fromTo(springBar, .75, {width: `calc(0% - 6px)`}, {width: `calc(90% - 175px)`})
 
 const controller = new ScrollMagic.Controller()
 const scene = new ScrollMagic.Scene({

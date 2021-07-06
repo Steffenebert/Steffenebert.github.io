@@ -252,7 +252,9 @@ div[class^='bar-'] {
 
 .bar-html,
 .bar-css,
-.bar-javascript {
+.bar-javascript,
+.bar-java,
+.bar-spring {
   width: calc(0 - 6px);
 }
 
