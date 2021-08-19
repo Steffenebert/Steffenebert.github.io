@@ -2,5 +2,14 @@ version: "3.9"
 services:
   web:
     build: .
-    ports:
-      - "80:81"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.steffenebertweb.entrypoints=websecure"
+      - "traefik.http.routers.steffenebertweb.rule=Host(`steffenebert.codes`)"
+      - "traefik.http.routers.steffenebertweb.tls=true"
+      - "traefik.http.routers.steffenebertweb.tls.certresolver=basic"
+      - "traefik.http.services.steffenebertweb.loadbalancer.server.port=80"
+      - "traefik.http.services.steffenebertweb.loadbalancer.healthcheck.path=/"
+      - "traefik.http.services.steffenebertweb.loadbalancer.healthcheck.interval=10s"
+      - "traefik.http.services.steffenebertweb.loadbalancer.healthcheck.timeout=9s"
+
