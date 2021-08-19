@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  traefik:
+    image: "traefik:latest"
+    container_name: "traefik"
+    restart: unless-stopped
+    network_mode: host
+    ports:
+      - "80:80"
+      - "443:443"
+    labels:
+      - "traefik.enable=true"
+      # Redirect to ssl
+      - "traefik.http.routers.http-catchall.rule=hostregexp(`{host:[a-z-.]+}`)"
+      - "traefik.http.routers.http-catchall.entrypoints=web"
+      - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      # Secure
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.api.tls.certresolver=basic"
+      - "traefik.http.routers.api.rule=Host(`traefik.steffenebert.codes`)"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.api.middlewares=auth"
+      # this is needed to run in host network :/, see https://github.com/traefik/traefik/issues/5732
+      - traefik.http.services.dummyService.loadbalancer.server.port=1337
+      # add/set pw using htpasswd
+      - "traefik.http.middlewares.auth.basicauth.usersFile=/etc/traefik/traefik.users"
+    volumes:
+      - "letsencrypt:/letsencrypt"
+      - "./files/traefik.users:/etc/traefik/traefik.users:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./files/traefik.yml:/etc/traefik/traefik.yml"
+
+volumes:
+  letsencrypt:

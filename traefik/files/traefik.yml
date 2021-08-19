@@ -1,0 +1,38 @@
+# enable accessLog
+# accessLog: {}
+# enable tracing
+# tracing: {}
+# set log level
+log:
+  level: INFO
+
+# Docker configuration backend
+providers:
+  docker:
+    exposedByDefault: false
+    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.steffenebert.codes`)"
+
+# API and dashboard configuration
+api:
+  insecure: false
+  dashboard: true
+
+# default entrypoints
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+# letsencrypt config
+certificatesResolvers:
+  basic:
+    acme:
+      email: "9Steffenebert8@gmail.com"
+      storage: "/letsencrypt/acme.json"
+      httpChallenge:
+        entryPoint: web
+
+# disable SSL certificate verification
+serversTransport:
+  insecureSkipVerify: true
