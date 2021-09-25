@@ -16,7 +16,7 @@ services:
       # Secure
       - "traefik.http.routers.api.entrypoints=websecure"
       - "traefik.http.routers.api.tls.certresolver=basic"
-      - "traefik.http.routers.api.rule=Host(`traefik.steffenebert.codes`)"
+      - "traefik.http.routers.api.rule=Host(`traefik.steffencodes.proqrent.de`)"
       - "traefik.http.routers.api.service=api@internal"
       - "traefik.http.routers.api.middlewares=auth"
       # this is needed to run in host network :/, see https://github.com/traefik/traefik/issues/5732
