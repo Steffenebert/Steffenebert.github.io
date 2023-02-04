@@ -5,7 +5,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.steffenebertweb.entrypoints=websecure"
-      - "traefik.http.routers.steffenebertweb.rule=Host(`steffencodes.proqrent.de`)"
+      - "traefik.http.routers.steffenebertweb.rule=Host(`steffenebert.codes`)"
       - "traefik.http.routers.steffenebertweb.tls=true"
       - "traefik.http.routers.steffenebertweb.tls.certresolver=basic"
       - "traefik.http.services.steffenebertweb.loadbalancer.server.port=80"

@@ -10,7 +10,7 @@ log:
 providers:
   docker:
     exposedByDefault: false
-    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.steffencodes.proqrent.de`)"
+    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.steffenebert.codes`)"
 
 # API and dashboard configuration
 api:
